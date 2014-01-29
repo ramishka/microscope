@@ -10,12 +10,18 @@ Template.postSubmit.events({
         }
 
         //Call server Method
-        Meteor.call('post', post, function(error, id) { //The Meteor.call function calls a Method named by its first argument. 
-
-            if (error)
-                return alert(error.reason);
-            Router.go('postPage', { _id: id }); //Route to the posts page if inser was a success - pass id to router
+        Meteor.call('post', post, function(error, id) { //This maps to a method in posts.js //methodName, dataParam, callback function
+            if (error) {
+                // display the error to the user
+                throwError(error.reason);
+                if ( error.error === 302 )
+                    Router.go('postPage', { _id: error.details })
+            } else {
+                Router.go('postPage', { _id: id });
+            }
         });
+
 
     }
 });
+
