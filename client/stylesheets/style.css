@@ -18,6 +18,12 @@ body {
 #spinner {
     height: 300px
 }
+
+#iron-router-progress {
+    background-color : #3399CC;
+    box-shadow       : 0 0 5px #3399CC;
+}
+
 .post {
     *zoom: 1;
     -webkit-transition: all 300ms 0ms;
